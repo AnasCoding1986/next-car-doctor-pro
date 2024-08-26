@@ -8,6 +8,9 @@ const Services = () => {
                 <h2 className='text-5xl'>Our Services area</h2>
                 <p>the majority have suffered alteration in some form, by injected humour, or randomised words which do not look even slightly believable. </p>
             </div>
+            <div className='container mx-auto mt-12 grid grid-cols-1 lg:grid-cols-3 gap-3'>
+                cards
+            </div>
         </div>
     );
 };
