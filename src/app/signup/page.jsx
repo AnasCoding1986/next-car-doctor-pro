@@ -6,8 +6,14 @@ import { FaFacebook, FaLinkedin, FaGoogle } from "react-icons/fa";
 
 const page = () => {
 
-    const handleSignUp = () => {
-        console.log("x");
+    const handleSignUp = (e) => {
+        e.preventDefault();
+        const newUser = {
+            name: e.target.name.value,
+            email: e.target.email.value,
+            password: e.target.password.value,
+        }      
+        console.log(newUser);
         
     }
 
