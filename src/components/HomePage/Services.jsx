@@ -3,7 +3,6 @@ import {services} from '../../lib/services'
 import ServicesCards from '../cards/ServicesCards';
 
 const Services = () => {
-    console.log(services);
     
     return (
         <div className='min-h-screen'>
