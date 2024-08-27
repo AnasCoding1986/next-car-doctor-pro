@@ -22,7 +22,7 @@ const page = () => {
                     <div className='my-5'>
                         <p>Or sign up with</p>
                     </div>
-                    <div className='flex mb-5 gap-5 justify-center items-center w-full'>
+                    <div className='flex mb-5 gap-10 text-primary justify-center items-center w-full'>
                         <FaFacebook />
                         <FaLinkedin />
                         <FaGoogle />
