@@ -6,14 +6,25 @@ import { FaFacebook, FaLinkedin, FaGoogle } from "react-icons/fa";
 
 const page = () => {
 
-    const handleSignUp = (e) => {
+    const handleSignUp = async (e) => {
         e.preventDefault();
         const newUser = {
             name: e.target.name.value,
             email: e.target.email.value,
             password: e.target.password.value,
         }      
-        console.log(newUser);
+
+        const res = await fetch ('http://localhost:3000/signup/api', {
+            method: 'POST',
+            body: JSON.stringify(newUser),
+            headers: {
+                'content-type': 'application/json'
+            }
+        })
+
+        console.log(res);
+        
+
         
     }
 

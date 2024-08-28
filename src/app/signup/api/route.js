@@ -15,9 +15,11 @@ export const POST = async (req) => {
                 headers: { 'Content-Type': 'application/json' }
             });
         }
+
+        const hashPassword = bcrypt.hashSync(newUser.password, 10);
         
         // Insert the new user into the collection
-        await userCollection.insertOne(newUser);
+        await userCollection.insertOne({...newUser, password:hashPassword});
         return new Response(JSON.stringify({ message: "User created" }), {
             status: 201, 
             headers: { 'Content-Type': 'application/json' }
