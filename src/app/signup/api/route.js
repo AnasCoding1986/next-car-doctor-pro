@@ -1,4 +1,5 @@
 import { connectDB } from "@/lib/connectDB";
+import bcrypt from "bcrypt";
 
 export const POST = async (req) => {
     const newUser = await req.json();
