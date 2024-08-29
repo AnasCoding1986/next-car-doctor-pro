@@ -10,26 +10,29 @@ export const POST = async (req) => {
         // Check if the user already exists
         const exists = await userCollection.findOne({ email: newUser.email });
         if (exists) {
-            return new Response(JSON.stringify({ message: "User already exists" }), {
-                status: 409, 
-                headers: { 'Content-Type': 'application/json' }
-            });
+            return Response.json({message: 'user alredy exists'}, {status: 409});
         }
 
         const hashPassword = bcrypt.hashSync(newUser.password, 10);
+
+        const resp = await userCollection.insertOne({...newUser, password:hashPassword});
+        return Response.json({message: 'user created'}, {status: 200});
+
         
-        // Insert the new user into the collection
-        await userCollection.insertOne({...newUser, password:hashPassword});
-        return new Response(JSON.stringify({ message: "User created" }), {
-            status: 201, 
-            headers: { 'Content-Type': 'application/json' }
-        });
+        
+        // // Insert the new user into the collection
+        // await userCollection.insertOne({...newUser, password:hashPassword});
+        // return new Response(JSON.stringify({ message: "User created" }), {
+        //     status: 201, 
+        //     headers: { 'Content-Type': 'application/json' }
+        // });
 
     } catch (error) {
         console.error("Error creating user:", error);
-        return new Response(JSON.stringify({ message: "Something went wrong", error: error.message }), {
-            status: 500, 
-            headers: { 'Content-Type': 'application/json' }
-        });
+        return Response.json(
+            {message: "Error creating user:", error}, 
+            {status: 500}
+
+        );
     }
 };
