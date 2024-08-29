@@ -6,7 +6,7 @@ export const POST = async (req) => {
     try {
         const db = await connectDB();
         const userCollection = db.collection('users');
-        
+                
         // Check if the user already exists
         const exists = await userCollection.findOne({ email: newUser.email });
         if (exists) {
@@ -18,21 +18,11 @@ export const POST = async (req) => {
         const resp = await userCollection.insertOne({...newUser, password:hashPassword});
         return Response.json({message: 'user created'}, {status: 200});
 
-        
-        
-        // // Insert the new user into the collection
-        // await userCollection.insertOne({...newUser, password:hashPassword});
-        // return new Response(JSON.stringify({ message: "User created" }), {
-        //     status: 201, 
-        //     headers: { 'Content-Type': 'application/json' }
-        // });
-
     } catch (error) {
         console.error("Error creating user:", error);
         return Response.json(
             {message: "Error creating user:", error}, 
             {status: 500}
-
         );
     }
 };

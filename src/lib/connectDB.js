@@ -17,7 +17,6 @@ export const connectDB = async() => {
         db = client.db('car-doctor');
         return db
     } catch (error) {
-        console.log(error);
-        
+        console.log(error);      
     }
 }
