@@ -12,7 +12,7 @@ const page = () => {
             name: e.target.name.value,
             email: e.target.email.value,
             password: e.target.password.value,
-        }      
+        };     
 
         const res = await fetch ('http://localhost:3000/signup/api', {
             method: 'POST',
@@ -22,10 +22,7 @@ const page = () => {
             }
         })
 
-        console.log(res);
-        
-
-        
+        console.log(res);       
     }
 
     return (
