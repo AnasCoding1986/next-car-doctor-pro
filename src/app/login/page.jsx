@@ -12,23 +12,14 @@ const LoginPage = () => {
         const email = e.target.email.value;
         const password = e.target.password.value;
 
-        try {
-            const resp = await signIn('credentials', {
-                email,
-                password,
-                redirect: false,
-            });
-            
-            if (resp.error) {
-                console.error('Login failed:', resp.error);
-                // Handle error by showing a message to the user
-            } else {
-                console.log('Login successful:', resp);
-                // Redirect user to the desired page after successful login
-            }
-        } catch (error) {
-            console.error('An unexpected error occurred:', error);
-        }
+        const resp = await signIn('credentials', {
+            email,
+            password,
+            redirect: false,
+        });
+
+        console.log(resp);
+        
     };
 
     return (

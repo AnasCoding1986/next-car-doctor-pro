@@ -1,38 +1,45 @@
+import { connectDB } from "@/lib/connectDB";
 import NextAuth from "next-auth";
+import bcrypt from "bcrypt";
 import CredentialsProvider from "next-auth/providers/credentials"
 
 const handler = NextAuth({
-    session: {
-        strategy: "jwt",
-        maxAge: 30 * 24 * 60 * 60, 
-    },
-    providers: [
-        CredentialsProvider({
-            credentials: {
-              username: {},
-              password: {}
-            },
-            async authorize(credentials, req) {
-              const res = await fetch("/your/endpoint", {
-                method: 'POST',
-                body: JSON.stringify(credentials),
-                headers: { "Content-Type": "application/json" }
-              })
-              const user = await res.json()
-        
-              // If no error and we have user data, return it
-              if (res.ok && user) {
-                return user
-              }
-              // Return null if user data could not be retrieved
-              return null
-            }
-          })
-    ],
-    callbacks: {},
-    pages: {
-        signIn: '/login'
-    }
+  session: {
+    strategy: "jwt",
+    maxAge: 30 * 24 * 60 * 60,
+  },
+  providers: [
+    CredentialsProvider({
+      credentials: {
+        email: {},
+        password: {}
+      },
+      async authorize(credentials) {
+        const { email, password } = credentials;
+        if (!email || !password) {
+          return null
+        }
+        const db = await connectDB();
+        const currentUser = await db.collection('users').findOne({ email });
+        if (!currentUser) {
+          return null
+        }
+
+        const passwordMatched = bcrypt.compareSync(
+          password,
+          currentUser.password
+        );
+        if (!passwordMatched) {
+          return null
+        }
+        return currentUser
+      }
+    })
+  ],
+  callbacks: {},
+  pages: {
+    signIn: '/login'
+  }
 });
 
-export {handler as GET, handler as POST}
+export { handler as GET, handler as POST }
