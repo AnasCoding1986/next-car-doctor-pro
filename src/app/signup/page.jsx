@@ -22,7 +22,10 @@ const page = () => {
             }
         })
 
-        console.log(res);       
+        console.log(res);   
+        if (res.status === 200) {
+            e.target.reset()
+        }    
     }
 
     return (
