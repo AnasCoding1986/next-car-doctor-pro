@@ -1,4 +1,5 @@
 "use client";
+import SocialLogin from '@/components/shared/SocialLogin';
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
@@ -52,11 +53,7 @@ const page = () => {
                     <div className='my-5'>
                         <p>Or sign up with</p>
                     </div>
-                    <div className='flex mb-5 gap-10 text-primary justify-center items-center w-full'>
-                        <FaFacebook />
-                        <FaLinkedin />
-                        <FaGoogle />
-                    </div>
+                    <SocialLogin></SocialLogin>
                     <div>
                         <p>Already have an account? <Link className='text-primary' href="http://localhost:3000/login">Login</Link></p>
                     </div>

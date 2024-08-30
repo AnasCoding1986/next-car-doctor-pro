@@ -3,9 +3,9 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
-import { FaFacebook, FaLinkedin, FaGoogle } from 'react-icons/fa';
 import { signIn } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
+import SocialLogin from '@/components/shared/SocialLogin';
 
 
 const LoginPage = () => {
@@ -53,11 +53,11 @@ const LoginPage = () => {
                     <div className='my-5'>
                         <p>Or login with</p>
                     </div>
-                    <div className='flex mb-5 gap-10 text-primary justify-center items-center w-full'>
-                        <FaFacebook />
-                        <FaLinkedin />
+                    <SocialLogin></SocialLogin>
+                    {/* <div className='flex mb-5 gap-10 text-primary justify-center items-center w-full'>
                         <FaGoogle />
-                    </div>
+                        <FaGithub />
+                    </div> */}
                     <div>
                         <p>Do not have an account? <Link className='text-primary' href="/signup">Sign up</Link></p>
                     </div>
