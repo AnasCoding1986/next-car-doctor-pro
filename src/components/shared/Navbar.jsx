@@ -1,3 +1,5 @@
+'use client';
+import { signOut, useSession } from 'next-auth/react';
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
@@ -5,28 +7,9 @@ import { IoCart, IoSearch } from "react-icons/io5";
 
 const Navbar = () => {
 
-    const navIteams = [
-        {
-            title: "Home",
-            path: "/"
-        },
-        {
-            title: "About",
-            path: "/about"
-        },
-        {
-            title: "Services",
-            path: "/services"
-        },
-        {
-            title: "Blog",
-            path: "/blog"
-        },
-        {
-            title: "Contacts",
-            path: "/contacts"
-        }
-    ]
+    const session = useSession();
+    console.log(session);
+    
 
     return (
         <div className='bg-base-100'>
@@ -50,11 +33,39 @@ const Navbar = () => {
                         <IoCart />
                         <IoSearch />
                         <a className="btn btn-outline btn-primary hover:text-white px-8">Appointment</a>
+                        {
+                            !session.data ?
+                            <Link href='/login' className='btn btn-primary px-8'>Login</Link> :
+                            <button onClick={() => signOut()} className='btn btn-primary px-8'>Logout</button> 
+                        }
                     </div>
                 </div>
             </div>
         </div>
     );
 };
+
+const navIteams = [
+    {
+        title: "Home",
+        path: "/"
+    },
+    {
+        title: "About",
+        path: "/about"
+    },
+    {
+        title: "Services",
+        path: "/services"
+    },
+    {
+        title: "Blog",
+        path: "/blog"
+    },
+    {
+        title: "Contacts",
+        path: "/contacts"
+    }
+]
 
 export default Navbar;
