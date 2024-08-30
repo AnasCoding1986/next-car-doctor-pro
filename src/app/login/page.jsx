@@ -5,8 +5,13 @@ import Link from 'next/link';
 import React from 'react';
 import { FaFacebook, FaLinkedin, FaGoogle } from 'react-icons/fa';
 import { signIn } from 'next-auth/react';
+import { useRouter } from 'next/navigation';
+
 
 const LoginPage = () => {
+
+    const router = useRouter();
+
     const handleLogin = async (e) => {
         e.preventDefault();
         const email = e.target.email.value;
@@ -18,7 +23,9 @@ const LoginPage = () => {
             redirect: false,
         });
 
-        console.log(resp);
+        if (resp.status === 200) {
+            router.push('/')
+        }
         
     };
 
