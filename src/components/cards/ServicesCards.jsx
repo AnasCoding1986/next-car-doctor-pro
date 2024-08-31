@@ -1,10 +1,11 @@
 
 import Image from 'next/image';
+import Link from 'next/link';
 import React from 'react';
 
 const ServicesCards = ({service}) => {
 
-    const {title,img,price,description} = service || {};
+    const {_id,title,img,price,description} = service || {};
     console.log(img);
     
 
@@ -19,7 +20,7 @@ const ServicesCards = ({service}) => {
                     <p>If a dog chews shoes whose shoes does he choose?</p>
                     <div className="card-actions justify-between items-center">
                         <h6 className='text-primary font-semibold'>Price: ${price}</h6>
-                        <button className="btn btn-primary">Buy Now</button>
+                        <Link href={`/services/${_id}`}><button className="btn btn-primary">View Details</button></Link>
                     </div>
                 </div>
             </div>
