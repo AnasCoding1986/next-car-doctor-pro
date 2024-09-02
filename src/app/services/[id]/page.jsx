@@ -23,7 +23,9 @@ const page = async ({ params }) => {
             <div className='grid gap-5 grid-cols-1 lg:grid-cols-3'>
                 <div className='col-span-1 lg:col-span-2 pl-3'>1
                     <Image src={img} alt='Service Image' layout="intrinsic" width={1600} height={400} className="w-full object-cover" />
+
                     <h2 className='text-xl font-semibold my-5'>{title}</h2>
+
                     <p className='font-light mb-5'>{description}</p>
 
                     <div className='grid gap-2 grid-cols-1 lg:grid-cols-2'>
@@ -55,6 +57,47 @@ const page = async ({ params }) => {
                     </div>
 
                     <p className='font-light my-5'>{description}</p>
+
+                    <h2 className='text-xl font-semibold my-5'>3 Simple Steps to Process</h2>
+
+                    <p className='font-light mb-5'>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which do not look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there is not anything embarrassing hidden in the middle of text</p>
+
+                    <div className='grid grid-cols-1 gap-3 md:grid-cols-3'>
+
+                        <div className="card bg-base-100 shadow-xl">
+                            <div className="card-body">
+                                <div className='flex items-center justify-center'>
+                                <button className='bg-primary w-14 h-14 rounded-full text-white text-xl font-semibold'>01</button>
+                                </div>
+                                <h2 className="card-title flex items-center justify-center mt-7 mb-4">Step One</h2>
+                                <p className='flex items-center justify-center'>It uses a dictionary of over 200 .</p>
+
+                            </div>
+                        </div>
+                        <div className="card bg-base-100 shadow-xl">
+                            <div className="card-body">
+                                <div className='flex items-center justify-center'>
+                                <button className='bg-primary w-14 h-14 rounded-full text-white text-xl font-semibold'>01</button>
+                                </div>
+                                <h2 className="card-title flex items-center justify-center mt-7 mb-4">Step One</h2>
+                                <p className='flex items-center justify-center'>It uses a dictionary of over 200 .</p>
+
+                            </div>
+                        </div>
+                        <div className="card bg-base-100 shadow-xl">
+                            <div className="card-body">
+                                <div className='flex items-center justify-center'>
+                                <button className='bg-primary w-14 h-14 rounded-full text-white text-xl font-semibold'>01</button>
+                                </div>
+                                <h2 className="card-title flex items-center justify-center mt-7 mb-4">Step One</h2>
+                                <p className='flex items-center justify-center'>It uses a dictionary of over 200 .</p>
+
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <Image src={img} alt='Service Image' layout="intrinsic" width={1600} height={400} className="w-full my-5 object-cover" />
 
                 </div>
 
