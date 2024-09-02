@@ -34,7 +34,13 @@ const Page = ({ params }) => {
       ...services
     }
 
-    const resp = await fetch('')
+    const resp = await fetch('http://localhost:3000/checkout/api/newBooking',{
+      method: 'POST',
+      body: JSON.stringify(newBooking),
+      headers: {
+        'content-type': 'application/json'
+      }
+    })
   };
 
   useEffect(() => {
