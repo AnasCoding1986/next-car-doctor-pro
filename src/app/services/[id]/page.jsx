@@ -1,6 +1,7 @@
 import { getServicesDetails } from '@/services/getServices';
 import Image from 'next/image';
 import React from 'react';
+import { FaArrowRight } from "react-icons/fa6";
 
 const page = async ({ params }) => {
     const details = await getServicesDetails(params.id);
@@ -67,7 +68,7 @@ const page = async ({ params }) => {
                         <div className="card bg-base-100 shadow-xl">
                             <div className="card-body">
                                 <div className='flex items-center justify-center'>
-                                <button className='bg-primary w-14 h-14 rounded-full text-white text-xl font-semibold'>01</button>
+                                    <button className='bg-primary w-14 h-14 rounded-full text-white text-xl font-semibold'>01</button>
                                 </div>
                                 <h2 className="card-title flex items-center justify-center mt-7 mb-4">Step One</h2>
                                 <p className='flex items-center justify-center'>It uses a dictionary of over 200 .</p>
@@ -77,7 +78,7 @@ const page = async ({ params }) => {
                         <div className="card bg-base-100 shadow-xl">
                             <div className="card-body">
                                 <div className='flex items-center justify-center'>
-                                <button className='bg-primary w-14 h-14 rounded-full text-white text-xl font-semibold'>01</button>
+                                    <button className='bg-primary w-14 h-14 rounded-full text-white text-xl font-semibold'>01</button>
                                 </div>
                                 <h2 className="card-title flex items-center justify-center mt-7 mb-4">Step One</h2>
                                 <p className='flex items-center justify-center'>It uses a dictionary of over 200 .</p>
@@ -87,7 +88,7 @@ const page = async ({ params }) => {
                         <div className="card bg-base-100 shadow-xl">
                             <div className="card-body">
                                 <div className='flex items-center justify-center'>
-                                <button className='bg-primary w-14 h-14 rounded-full text-white text-xl font-semibold'>01</button>
+                                    <button className='bg-primary w-14 h-14 rounded-full text-white text-xl font-semibold'>01</button>
                                 </div>
                                 <h2 className="card-title flex items-center justify-center mt-7 mb-4">Step One</h2>
                                 <p className='flex items-center justify-center'>It uses a dictionary of over 200 .</p>
@@ -102,7 +103,45 @@ const page = async ({ params }) => {
                 </div>
 
 
-                <div className='col-span-1'>2</div>
+                <div className='col-span-1'>2
+                    <div className='bg-[#F3F3F3] py-2'>
+                        <h2 className='text-lg font-bold ml-8 pt-8'>Services</h2>
+                        <div className='my-8'>
+                            <div className='bg-[#fff] flex justify-between p-4 my-4 mx-8'>
+                                <p>Full Car Repair</p>
+                                <div className='text-primary'>
+                                    <FaArrowRight />
+                                </div>
+                            </div>
+                            <div className='bg-[#fff] flex justify-between p-4 my-4 mx-8'>
+                                <p>Full Car Repair</p>
+                                <div className='text-primary'>
+                                    <FaArrowRight />
+                                </div>
+                            </div>
+                            <div className='bg-[#fff] flex justify-between p-4 my-4 mx-8'>
+                                <p>Full Car Repair</p>
+                                <div className='text-primary'>
+                                    <FaArrowRight />
+                                </div>
+                            </div>
+                            <div className='bg-[#fff] flex justify-between p-4 my-4 mx-8'>
+                                <p>Full Car Repair</p>
+                                <div className='text-primary'>
+                                    <FaArrowRight />
+                                </div>
+                            </div>
+                            <div className='bg-[#fff] flex justify-between p-4 my-4 mx-8'>
+                                <p>Full Car Repair</p>
+                                <div className='text-primary'>
+                                    <FaArrowRight />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <h2 className='text-xl font-semibold my-5'>Price ${price}</h2>
+                    <button className='btn btn-primary w-full'>Proceed Checkout</button>
+                </div>
             </div>
         </div>
     );
