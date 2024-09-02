@@ -1,11 +1,12 @@
 import { getServicesDetails } from '@/services/getServices';
 import Image from 'next/image';
+import Link from 'next/link';
 import React from 'react';
 import { FaArrowRight } from "react-icons/fa6";
 
 const page = async ({ params }) => {
     const details = await getServicesDetails(params.id);
-    const { title, img, price, description, facility } = details.service;
+    const { _id, title, img, price, description, facility } = details.service;
     console.log(details.service);
 
     // console.log(title, img, price, description, facility);
@@ -140,7 +141,7 @@ const page = async ({ params }) => {
                         </div>
                     </div>
                     <h2 className='text-xl font-semibold my-5'>Price ${price}</h2>
-                    <button className='btn btn-primary w-full'>Proceed Checkout</button>
+                    <Link href={`/checkout/${_id}`}><button className='btn btn-primary w-full'>Proceed Checkout</button></Link>
                 </div>
             </div>
         </div>
