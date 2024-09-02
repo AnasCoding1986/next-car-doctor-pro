@@ -25,6 +25,16 @@ const Page = ({ params }) => {
   const handleBooking = async (e) => {
     e.preventDefault();
     // Handle booking logic here
+    const newBooking = {
+      email: data?.user?.email,
+      name: data?.user?.name,
+      address: e.target.address.value,
+      phone: e.target.address.phone,
+      date: e.target.address.date,
+      ...services
+    }
+
+    const resp = await fetch('')
   };
 
   useEffect(() => {
@@ -62,13 +72,13 @@ const Page = ({ params }) => {
                     <label className="label">
                       <span className="label-text">Name</span>
                     </label>
-                    <input type="text" defaultValue={data?.user?.name} className="input input-bordered" />
+                    <input type="text" readOnly name='name' defaultValue={data?.user?.name} className="input input-bordered" />
                   </div>
                   <div className="form-control">
                     <label className="label">
                       <span className="label-text">Date</span>
                     </label>
-                    <input type="text" defaultValue={currentDate} className="input input-bordered" required readOnly />
+                    <input type="text" readOnly name='date' defaultValue={currentDate} className="input input-bordered" required />
                   </div>
                 </div>
                 <div className='grid grid-cols-1 lg:grid-cols-2 gap-2'>
@@ -76,13 +86,13 @@ const Page = ({ params }) => {
                     <label className="label">
                       <span className="label-text">Phone</span>
                     </label>
-                    <input type="number" placeholder="Your Phone" className="input input-bordered" required />
+                    <input type="number" name='phone' placeholder="Your Phone" className="input input-bordered" required />
                   </div>
                   <div className="form-control">
                     <label className="label">
                       <span className="label-text">Email</span>
                     </label>
-                    <input type="email" defaultValue={data?.user?.email} className="input input-bordered" />
+                    <input type="email" name='email' defaultValue={data?.user?.email} className="input input-bordered" />
                   </div>
                 </div>
                 <div className='grid grid-cols-1 lg:grid-cols-2 gap-2'>
@@ -90,13 +100,13 @@ const Page = ({ params }) => {
                     <label className="label">
                       <span className="label-text">Price</span>
                     </label>
-                    <input type="number" defaultValue={price} className="input input-bordered" required />
+                    <input type="number" name='price' defaultValue={price} className="input input-bordered" required />
                   </div>
                   <div className="form-control">
                     <label className="label">
                       <span className="label-text">Address</span>
                     </label>
-                    <input type="text" placeholder="Your address" className="input input-bordered" required />
+                    <input type="text" name='address' placeholder="Your address" className="input input-bordered" required />
                   </div>
                 </div>
 
@@ -115,17 +125,4 @@ const Page = ({ params }) => {
 export default Page;
 
 
-// import { connectDB } from "@/lib/connectDB";
 
-
-// export const GET = async (req) => {
-//     const booking = await req.json();
-//     const db = await connectDB();
-//     const bookingsCollection = db.collection('bookings');
-//     try {
-//         const newBookings = await bookingsCollection.insertOne(booking);
-//         return Response.json({message: "Service booked successfully"})
-//     } catch (error) {
-//         console.log(error);
-//     }
-// }
