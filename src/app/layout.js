@@ -3,6 +3,8 @@ import "./globals.css";
 import Navbar from "@/components/shared/Navbar";
 import Foter from "@/components/shared/Foter";
 import AuthProvider from "@/services/AuthProvider";
+import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer } from "react-toastify";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -16,6 +18,7 @@ export default function RootLayout({ children }) {
     <html lang="en" data-theme="carDoctorTheme">
 
       <body className={inter.className}>
+      <ToastContainer />
         <AuthProvider>
           <Navbar></Navbar>
           {children}

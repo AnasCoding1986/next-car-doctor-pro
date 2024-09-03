@@ -3,6 +3,7 @@
 import { getServicesDetails } from '@/services/getServices';
 import { useSession } from 'next-auth/react';
 import React, { useEffect, useState } from 'react';
+import { toast, ToastContainer } from 'react-toastify';
 
 const Page = ({ params }) => {
   const { data } = useSession();
@@ -48,6 +49,8 @@ const Page = ({ params }) => {
       if (!resp.ok) {
         throw new Error('Booking submission failed');
       }
+      toast.success("newbooking successfully included");
+      e.target.reset()
     } catch (error) {
       console.error('Error submitting booking:', error);
     }
