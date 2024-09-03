@@ -59,6 +59,10 @@ const navIteams = [
         path: "/services"
     },
     {
+        title: "MyBooking",
+        path: "/myBooking"
+    },
+    {
         title: "Blog",
         path: "/blog"
     },

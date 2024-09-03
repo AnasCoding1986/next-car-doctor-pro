@@ -24,24 +24,35 @@ const Page = ({ params }) => {
 
   const handleBooking = async (e) => {
     e.preventDefault();
-    // Handle booking logic here
+  
+    // Correctly access form field values
     const newBooking = {
       email: data?.user?.email,
       name: data?.user?.name,
       address: e.target.address.value,
-      phone: e.target.address.phone,
-      date: e.target.address.date,
+      phone: e.target.phone.value,  // Corrected from e.target.address.phone
+      date: e.target.date.value,    // Corrected from e.target.address.date
       ...services
-    }
-
-    const resp = await fetch('http://localhost:3000/checkout/api/newBooking',{
-      method: 'POST',
-      body: JSON.stringify(newBooking),
-      headers: {
-        'content-type': 'application/json'
+    };
+  
+    try {
+      const resp = await fetch('http://localhost:3000/checkout/api/newBooking', {
+        method: 'POST',
+        body: JSON.stringify(newBooking),
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      });
+  
+      // Handle the response (e.g., success notification or error handling)
+      if (!resp.ok) {
+        throw new Error('Booking submission failed');
       }
-    })
+    } catch (error) {
+      console.error('Error submitting booking:', error);
+    }
   };
+  
 
   useEffect(() => {
     loadService();
