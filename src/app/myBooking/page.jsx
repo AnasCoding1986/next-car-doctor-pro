@@ -64,14 +64,19 @@ const Page = () => {
                         <tbody>
                             
                             {
-                                bookings?.map(({title,_id,date,price})=>(
+                                bookings?.map(({ title, _id, date, price }, index)=>(
 
                                     <tr key={_id}>
-                                    <th>1</th>
+                                    <th>{index + 1}</th>
                                     <td>{title}</td>
                                     <td>{price}</td>
                                     <td>{date}</td>
-                                    <td>edit</td>
+                                    <td>
+                                        <div className="flex items-center space-x-3">
+                                            <button className="btn btn-info">Edit</button>
+                                            <button className="btn btn-error">Delete</button>
+                                        </div>
+                                    </td>
                                 </tr>
                                 ))
                             }
