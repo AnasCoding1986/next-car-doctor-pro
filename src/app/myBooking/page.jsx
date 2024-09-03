@@ -48,7 +48,7 @@ const Page = () => {
                 <h1 className="text-4xl absolute left-14 text-white font-extrabold">My booking</h1>
                 <button className="btn bottom-0 absolute btn-primary">Home/Service Details</button>
             </div>
-            <div>
+            <div className="container mx-auto flex justify-center my-10">
                 <div className="overflow-x-auto">
                     <table className="table">
                         {/* head */}
