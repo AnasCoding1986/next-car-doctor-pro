@@ -26,6 +26,30 @@ const Page = () => {
         }
     }
 
+    const handleDelete = async (id) => {
+        try {
+            const response = await fetch(`http://localhost:3000/myBooking/api/delete-booking/${id}`, {
+                method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+            });
+    
+            if (!response.ok) {
+                throw new Error("Failed to delete the booking");
+            }
+    
+            const result = await response.json();
+            console.log(result);
+    
+            // Update state after successful deletion
+            setBookings(bookings.filter((booking) => booking._id !== id));
+        } catch (error) {
+            console.error("Error deleting booking:", error);
+        }
+    };
+    
+
     useEffect(() => {
         if (session && session.status === "authenticated") {
             loadData();
@@ -74,7 +98,7 @@ const Page = () => {
                                     <td>
                                         <div className="flex items-center space-x-3">
                                             <button className="btn btn-info">Edit</button>
-                                            <button className="btn btn-error">Delete</button>
+                                            <button onClick={()=>handleDelete(_id)} className="btn btn-error">Delete</button>
                                         </div>
                                     </td>
                                 </tr>
