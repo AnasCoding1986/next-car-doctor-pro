@@ -2,7 +2,7 @@
 
 import { useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
-// import { ToastContainer, toast, Bounce } from 'react-toastify';
+import { ToastContainer, toast, Bounce } from 'react-toastify';
 
 
 const Page = () => {
@@ -29,16 +29,34 @@ const Page = () => {
     }
 
     const handleDelete = async (id) => {
-        const deleted = await fetch(`http://localhost:3000/myBooking/api/delete-booking/${id}`,{
-            method: 'DELETE',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-        });
-        console.log(deleted);
-        
+        try {
+            const resp = await fetch(`http://localhost:3000/myBooking/api/delete-booking/${id}`, {
+                method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+            });
+
+            if (resp.ok) {
+                toast.success('Booking deleted successfully!', { 
+                    position: "top-center",
+                    autoClose: 2000,
+                    transition: Bounce 
+                });
+                // Reload data after successful deletion
+                loadData();
+            } else {
+                throw new Error("Failed to delete booking.");
+            }
+        } catch (error) {
+            console.error("Delete error:", error);
+            toast.error('Failed to delete booking!', { 
+                position: "top-center",
+                autoClose: 2000,
+                transition: Bounce 
+            });
+        }
     };
-    
 
     useEffect(() => {
         if (session && session.status === "authenticated") {
