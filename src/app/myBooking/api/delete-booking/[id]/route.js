@@ -15,6 +15,36 @@ export const DELETE = async (request, {params}) => {
     }
 }
 
+// export const PATCH = async (request, {params}) => {
+//     const db = await connectDB();
+//     console.log(db);
+    
+//     const bookingcollection = db.collection('bookings');
+//     try {
+//         const resp = await bookingcollection
+//         .deleteOne({_id: params.id})
+//         return Response.json({message: "deleted the booking", response: resp})
+//     } catch (error) {
+//         console.log(error);
+//         return Response.json({message: "something wrong"})
+//     }
+// }
+
+export const GET = async (request, {params}) => {
+    const db = await connectDB();
+    console.log(db);
+    
+    const bookingcollection = db.collection('bookings');
+    try {
+        const resp = await bookingcollection
+        .findOne({_id: params.id})
+        return Response.json({message: "Get booking successful", response: resp})
+    } catch (error) {
+        console.log(error);
+        return Response.json({message: "something wrong"})
+    }
+}
+
 
 
 

@@ -2,7 +2,7 @@
 
 import { useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
-import { ToastContainer, toast, Bounce } from 'react-toastify';
+import { toast, Bounce } from 'react-toastify';
 
 
 const Page = () => {
@@ -36,6 +36,7 @@ const Page = () => {
                     'Content-Type': 'application/json'
                 },
             });
+            
 
             if (resp.ok) {
                 toast.success('Booking deleted successfully!', { 
