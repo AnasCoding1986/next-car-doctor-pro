@@ -9,3 +9,9 @@ export const getServicesDetails = async(id) => {
     const service = await res.json();
     return service
 }
+
+export const getBookingDetails = async(id) => {
+    const res = await fetch(`http://localhost:3000/myBooking/api/delete-booking/${id}`);
+    const service = await res.json();
+    return service
+}
