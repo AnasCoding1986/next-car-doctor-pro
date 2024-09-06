@@ -24,23 +24,20 @@ const Page = ({ params }) => {
 
   const { title, img, price, description, facility } = services || {};
 
-  const handleBooking = async (e) => {
+  const handleUpdate = async (e) => {
     e.preventDefault();
   
     // Correctly access form field values
-    const newBooking = {
-      email: data?.user?.email,
-      name: data?.user?.name,
+    const updatedBooking = {
+      date: e.target.date.value,
+      phone: e.target.phone.value,
       address: e.target.address.value,
-      phone: e.target.phone.value,  // Corrected from e.target.address.phone
-      date: e.target.date.value,    // Corrected from e.target.address.date
-      ...services
     };
   
     try {
-      const resp = await fetch('http://localhost:3000/checkout/api/newBooking', {
-        method: 'POST',
-        body: JSON.stringify(newBooking),
+      const resp = await fetch(`http://localhost:3000/myBooking/api/delete-booking/${params.id}`, {
+        method: 'PATCH',
+        body: JSON.stringify(updatedBooking),
         headers: {
           'Content-Type': 'application/json'
         }
@@ -50,7 +47,7 @@ const Page = ({ params }) => {
       if (!resp.ok) {
         throw new Error('Booking submission failed');
       }
-      toast.success("newbooking successfully included");
+      toast.success("updated booking successfully");
       e.target.reset()
     } catch (error) {
       console.error('Error submitting booking:', error);
@@ -88,7 +85,7 @@ const Page = ({ params }) => {
         <div className="hero min-h-screen bg-[#F3F3F3]">
           <div className="hero-content">
             <div className="card bg-base-100 w-full shadow-2xl">
-              <form onSubmit={handleBooking} className="card-body">
+              <form onSubmit={handleUpdate} className="card-body">
                 <div className='grid grid-cols-1 lg:grid-cols-2 gap-2'>
                   <div className="form-control">
                     <label className="label">
@@ -100,7 +97,7 @@ const Page = ({ params }) => {
                     <label className="label">
                       <span className="label-text">Date</span>
                     </label>
-                    <input type="text" readOnly name='date' defaultValue={services?.date} className="input input-bordered" required />
+                    <input type="text" name='date' defaultValue={services?.date} className="input input-bordered" required />
                   </div>
                 </div>
                 <div className='grid grid-cols-1 lg:grid-cols-2 gap-2'>
@@ -133,7 +130,7 @@ const Page = ({ params }) => {
                 </div>
 
                 <div className="form-control mt-6">
-                  <button className="btn btn-primary">Order confirm</button>
+                  <button className="btn btn-primary">Update Your Booking</button>
                 </div>
               </form>
             </div>
