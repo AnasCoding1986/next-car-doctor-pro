@@ -18,10 +18,23 @@ export const DELETE = async (request, {params}) => {
 export const PATCH = async (request, {params}) => {
     const db = await connectDB();
     const bookingcollection = db.collection('bookings');
+    const {date,phone,address} = await request.json();
     try {
         const resp = await bookingcollection
-        .updateOne({_id: params.id})
-        return Response.json({message: "deleted the booking", response: resp})
+        .updateOne(
+            {_id: params.id},
+            {
+                $set: {
+                    date,
+                    phone,
+                    address
+                }
+            },
+            {
+                upsert: true
+            }
+        )
+        return Response.json({message: "updated booking", response: resp})
     } catch (error) {
         console.log(error);
         return Response.json({message: "something wrong"})
