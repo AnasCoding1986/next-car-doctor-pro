@@ -37,7 +37,7 @@ const Page = ({ params }) => {
     };
   
     try {
-      const resp = await fetch('http://localhost:3000/checkout/api/newBooking', {
+      const resp = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/checkout/api/newBooking`, {
         method: 'POST',
         body: JSON.stringify(newBooking),
         headers: {

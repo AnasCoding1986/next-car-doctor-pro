@@ -1,16 +1,31 @@
 import axios from "axios";
 
 export const getServices = async () => {
-    const res = await axios.get('http://localhost:3000/services/api/getAll');
-    return res.data
+    try {
+        const res = await axios.get(`${process.env.NEXT_PUBLIC_BASE_URL}/services/api/getAll`);
+        return res.data
+    } catch (error) {
+        console.log(error);
+        return []
+    }
 }
 
 export const getServicesDetails = async (id) => {
-    const res = await axios.get(`http://localhost:3000/services/api/${id}`);
-    return res.data
+    try {
+        const res = await axios.get(`${process.env.NEXT_PUBLIC_BASE_URL}/services/api/${id}`);
+        return res.data
+    } catch (error) {
+        console.log(error);
+        return []
+    }
 }
 
 export const getBookingDetails = async (id) => {
-    const res = await axios.get(`http://localhost:3000/myBooking/api/delete-booking/${id}`);
-    return res.data
+    try {
+        const res = await axios.get(`${process.env.NEXT_PUBLIC_BASE_URL}/myBooking/api/delete-booking/${id}`);
+        return res.data
+    } catch (error) {
+        console.log(error);
+        return []
+    }
 }

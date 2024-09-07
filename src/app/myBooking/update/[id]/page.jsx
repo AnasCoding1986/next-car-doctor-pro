@@ -35,7 +35,7 @@ const Page = ({ params }) => {
     };
   
     try {
-      const resp = await fetch(`http://localhost:3000/myBooking/api/delete-booking/${params.id}`, {
+      const resp = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/myBooking/api/delete-booking/${params.id}`, {
         method: 'PATCH',
         body: JSON.stringify(updatedBooking),
         headers: {

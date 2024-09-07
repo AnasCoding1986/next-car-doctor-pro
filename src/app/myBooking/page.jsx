@@ -31,7 +31,7 @@ const Page = () => {
 
     const handleDelete = async (id) => {
         try {
-            const resp = await fetch(`http://localhost:3000/myBooking/api/delete-booking/${id}`, {
+            const resp = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/myBooking/api/delete-booking/${id}`, {
                 method: 'DELETE',
                 headers: {
                     'Content-Type': 'application/json'
