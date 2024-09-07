@@ -1,5 +1,6 @@
 import { connectDB } from "@/lib/connectDB";
 import { services } from "@/lib/services";
+import { NextResponse } from "next/server";
 
 export const GET = async () => {
   try {
@@ -9,9 +10,9 @@ export const GET = async () => {
     await servicesCollection.deleteMany();
     await servicesCollection.insertMany(services);
 
-    return new Response(JSON.stringify({ message: 'Seeded successfully' }), { status: 200 });
+    return new NextResponse(JSON.stringify({ message: 'Seeded successfully' }), { status: 200 });
   } catch (error) {
     console.error("Error seeding services:", error);
-    return new Response(JSON.stringify({ message: 'Failed to seed data' }), { status: 500 });
+    return new NextResponse(JSON.stringify({ message: 'Failed to seed data' }), { status: 500 });
   }
 };

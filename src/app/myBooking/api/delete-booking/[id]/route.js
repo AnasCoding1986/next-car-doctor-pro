@@ -1,4 +1,5 @@
 import { connectDB } from "@/lib/connectDB"
+import { NextResponse } from "next/server";
 
 export const DELETE = async (request, {params}) => {
     const db = await connectDB();
@@ -8,10 +9,10 @@ export const DELETE = async (request, {params}) => {
     try {
         const resp = await bookingcollection
         .deleteOne({_id: params.id})
-        return Response.json({message: "deleted the booking", response: resp})
+        return NextResponse.json({message: "deleted the booking", response: resp})
     } catch (error) {
         console.log(error);
-        return Response.json({message: "something wrong"})
+        return NextResponse.json({message: "something wrong"})
     }
 }
 
@@ -32,10 +33,10 @@ export const PATCH = async (request, {params}) => {
                 upsert: true
             }
         )
-        return Response.json({message: "updated booking", response: resp})
+        return NextResponse.json({message: "updated booking", response: resp})
     } catch (error) {
         console.log(error);
-        return Response.json({message: "something wrong"})
+        return NextResponse.json({message: "something wrong"})
     }
 }
 
@@ -47,10 +48,10 @@ export const GET = async (request, {params}) => {
     try {
         const resp = await bookingcollection
         .findOne({_id: params.id})
-        return Response.json({message: "Get booking successful", response: resp})
+        return NextResponse.json({message: "Get booking successful", response: resp})
     } catch (error) {
         console.log(error);
-        return Response.json({message: "something wrong"})
+        return NextResponse.json({message: "something wrong"})
     }
 }
 

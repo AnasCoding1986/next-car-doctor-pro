@@ -1,17 +1,16 @@
-export const getServices = async() => {
-    const res = await fetch('http://localhost:3000/services/api/getAll');
-    const services = await res.json();
-    return services
+import axios from "axios";
+
+export const getServices = async () => {
+    const res = await axios.get('http://localhost:3000/services/api/getAll');
+    return res.data
 }
 
-export const getServicesDetails = async(id) => {
-    const res = await fetch(`http://localhost:3000/services/api/${id}`);
-    const service = await res.json();
-    return service
+export const getServicesDetails = async (id) => {
+    const res = await axios.get(`http://localhost:3000/services/api/${id}`);
+    return res.data
 }
 
-export const getBookingDetails = async(id) => {
-    const res = await fetch(`http://localhost:3000/myBooking/api/delete-booking/${id}`);
-    const service = await res.json();
-    return service
+export const getBookingDetails = async (id) => {
+    const res = await axios.get(`http://localhost:3000/myBooking/api/delete-booking/${id}`);
+    return res.data
 }
