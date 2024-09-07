@@ -8,6 +8,6 @@ export const GET = async (req, {params}) => {
         const myBookings = await bookingsCollection.find({email: params.email}).toArray();
         return NextResponse.json({myBookings})
     } catch (error) {
-        console.log(error);       
+        return NextResponse.json({message: "no data found", error})       
     }
 }

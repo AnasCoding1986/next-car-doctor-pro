@@ -8,6 +8,6 @@ export const GET = async (req, {params}) => {
         const service = await servicesCollection.findOne({_id: params.id});
         return NextResponse.json({service})
     } catch (error) {
-        console.log(error);       
+        return NextResponse.json({message: "no data found", error})      
     }
 }
