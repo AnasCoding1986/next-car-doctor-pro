@@ -4,13 +4,15 @@ import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
 import { signIn } from 'next-auth/react';
-import { useRouter } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 import SocialLogin from '@/components/shared/SocialLogin';
 
 
 const LoginPage = () => {
 
     const router = useRouter();
+    const searchParams = useSearchParams();
+    const path = searchParams.get("redirect");
 
     const handleLogin = async (e) => {
         e.preventDefault();
@@ -20,7 +22,8 @@ const LoginPage = () => {
         const resp = await signIn('credentials', {
             email,
             password,
-            redirect: false,
+            redirect: true,
+            callbackUrl: path? path : "/"
         });
 
         if (resp.status === 200) {

@@ -1,6 +1,6 @@
 'use client';
 import { signIn, useSession } from 'next-auth/react';
-import { useRouter } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 
 import React from 'react';
 import { FaGoogle, FaGithub } from 'react-icons/fa';
@@ -9,9 +9,11 @@ const SocialLogin = () => {
 
     const router = useRouter();
     const session = useSession();
+    const searchParams = useSearchParams();
+    const path = searchParams.get("redirect");
 
     const handleLogin = async(provider) => {
-        const res = await signIn(provider, {redirect: false});
+        const res = await signIn(provider, {redirect: true, callbackUrl: path? path : "/"});
     }
     if (session.status === 'authenticated') {
         router.push('/')
