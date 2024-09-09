@@ -60,7 +60,7 @@ const Page = ({ params }) => {
   useEffect(() => {
     loadService();
     setCurrentDate(formatDate(new Date()));  // Set the formatted date when the component mounts
-  }, [params]);
+  }, []);
 
   // Utility function to format date as dd/mm/yyyy
   const formatDate = (date) => {

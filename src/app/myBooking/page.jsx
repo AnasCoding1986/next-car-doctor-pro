@@ -14,7 +14,7 @@ const Page = () => {
     const loadData = async () => {
         try {
             if (session?.data?.user?.email) {
-                const resp = await fetch(`http://localhost:3000/myBooking/api/${session.data.user.email}`);
+                const resp = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/myBooking/api/${session.data.user.email}`);
                 if (!resp.ok) {
                     throw new Error("Network response was not ok");
                 }
@@ -64,7 +64,7 @@ const Page = () => {
         if (session && session.status === "authenticated") {
             loadData();
         }
-    }, [session]);
+    }, []);
 
     useEffect(() => {
         console.log("Updated bookings:", bookings);
