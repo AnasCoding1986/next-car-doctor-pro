@@ -36,7 +36,7 @@ const Page = ({ params }) => {
       ...services
     };
   
-    try {
+    try {    
       const resp = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/checkout/api/newBooking`, {
         method: 'POST',
         body: JSON.stringify(newBooking),
