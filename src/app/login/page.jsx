@@ -8,7 +8,7 @@ import { useRouter, useSearchParams } from 'next/navigation';
 import SocialLogin from '@/components/shared/SocialLogin';
 
 
-const LoginPage = () => {
+const LoginComponent = () => {
 
     const router = useRouter();
     const searchParams = useSearchParams();
@@ -18,7 +18,7 @@ const LoginPage = () => {
         e.preventDefault();
         const email = e.target.email.value;
         const password = e.target.password.value;
-
+  
         const resp = await signIn('credentials', {
             email,
             password,
@@ -71,5 +71,16 @@ const LoginPage = () => {
         </Suspense>
     );
 };
+
+
+const LoginPage = () => {
+    return (
+        <Suspense fallback={<div>loading</div>}>
+            <LoginComponent></LoginComponent>
+        </Suspense>
+    );
+};
+
+
 
 export default LoginPage;
