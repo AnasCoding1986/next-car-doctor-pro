@@ -7,6 +7,7 @@ const page = () => {
             <p>New try with different strategy</p>
             <p>Trying with support</p>
             <p>Lets move on</p>
+            <p>again a problem</p>
         </div>
     );
 };
