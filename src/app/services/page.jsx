@@ -7,16 +7,6 @@ const page = () => {
             <p>New try with different strategy</p>
             <p>Trying with support</p>
             <p>Lets move on</p>
-            <p>again a problem</p>
-            <p>10/09/2024</p>
-            <p>11/09/2024</p>
-            <p>12/09/2024</p>
-            <p>13/09/2024</p>
-            <p>14/09/2024</p>
-            <p>14/09/2024(2)</p>
-            <p>15/09/2024</p>
-            <p>15/09/2024(2)</p>
-            <p>15/09/2024(3)</p>
             <p>16/09/2024(1)</p>
             <p>16/09/2024(2)</p>
         </div>
