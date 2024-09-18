@@ -7,6 +7,7 @@ const page = () => {
             <p>New try with different strategy</p>
             <p>Trying with support</p>
             <p>18/09/2024(1)</p>
+            <p>18/09/2024(2)</p>
         </div>
     );
 };
